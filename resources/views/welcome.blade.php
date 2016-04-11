@@ -4,7 +4,7 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
+        <link href="{{ URL::asset('_css/main.css') }}" rel="stylesheet" type="text/css">
         <style>
             html, body {
                 height: 100%;
@@ -38,7 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div><img class="home-logo" src="{{ URL::asset('_img/utd-logo.png') }}"> </div>
+                <div class="title"><img class="home-logo" src="{{ URL::asset('_img/comet.png') }}"> Free and For Sale</div>
             </div>
         </div>
     </body>

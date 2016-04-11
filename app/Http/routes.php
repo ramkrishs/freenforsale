@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','MainController@index');
+
+Route::get('login','MainController@login');
+
+Route::get('register','MainController@signup');
