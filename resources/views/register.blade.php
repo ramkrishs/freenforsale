@@ -11,28 +11,45 @@
         <p class='explanation'>
             To sign up make sure you use your UTD email id.
         </p>
-        <div class='form'>
-            <div class='field'>
-                <input class='placeholder-input' id='name' type='text'>
+        <form role="form" method="POST" action="{{ route('auth.signup') }}">
+
+            <div class='form'>
+                <div class='field '>
+                    <input class='placeholder-input {{ $errors->has('name') ? 'has-error' :'' }}' name="name" id='name'
+                           type='text'
+                           value="{{Request::old('name') ?: ''}}">
+                    @if($errors->has('name'))
+                        <div class="error">{{$errors->first('name')}}</div>
+                    @endif
                 <label class='placeholder-label' for='name'>Full name</label>
             </div>
             <div class='field'>
-                <input class='placeholder-input' id='email' type='email'>
+                <input class='placeholder-input {{ $errors->has('email') ? 'has-error' :'' }}' name="email" id='email'
+                       type='email'
+                       value="{{Request::old('email') ?: ''}}">
+                @if($errors->has('email'))
+                    <div class="error">{{$errors->first('email')}}</div>
+                @endif
                 <label class='placeholder-label' for='email'>Email</label>
             </div>
             <div class='field'>
-                <input class='placeholder-input' id='password' type='password'>
+                <input class='placeholder-input {{ $errors->has('password') ? 'has-error' :'' }}' name="password"
+                       id='password' type='password'>
+                @if($errors->has('password'))
+                    <div class="error">{{$errors->first('password')}}</div>
+                @endif
                 <label class='placeholder-label' for='password'>Password</label>
             </div>
             <div class="field">
                 <button class="placeholder-input btn-lg btn-success " type="submit">Sign up</button>
             </div>
             <div class="field">
-
+                <input type="hidden" name="_token" value="{{Session::token()}}">
             </div>
 
 
         </div>
+        </form>
         <label class="placeholder-label">Already have an account? <a href="{{ URL::to('/login')}}">Sign in</a></label>
     </div>
 

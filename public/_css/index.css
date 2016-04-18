@@ -30,6 +30,19 @@ body {
     width: 150px;
 }
 
+.has-error {
+    border: 1px solid #EF1919 !important;
+}
+
+.error {
+    position: relative;
+    right: -500px;
+    text-align: left;
+    padding: 10px 13px;
+    margin: 0px 0 10px;
+    font-size: 14px;
+    border-left: 5px solid #EF1919;
+}
 /*
 Basic input element using psuedo classes
 */

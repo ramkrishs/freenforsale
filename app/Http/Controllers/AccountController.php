@@ -6,43 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class MainController extends Controller
+class AccountController extends Controller
 {
 
-    public function login()
+
+    public function sold()
     {
-        return view('index');
+        return view('account.sold');
     }
 
-    public function index()
+    public function bought()
     {
-        return view('index');
+        return view('account.bought');
     }
 
-    public function signup()
+    public function wishlist()
     {
-        return view('register');
-    }
-
-    public function home()
-    {
-        return view('home');
-    }
-    
-    public function buy()
-    {
-        return view('products.buy');
-    }
-    public function sell()
-    {
-        return view('products.sell');
-    }
-    public function profile()
-    {
-        return view('users.profile');
-    }
-    public function settings()
-    {
-        return view('users.settings');
+        return view('account.wishlist');
     }
 }

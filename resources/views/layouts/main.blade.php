@@ -13,6 +13,7 @@
     <div class="content">
         <div><img class="home-logo" src="{{ URL::asset('_img/utd-logo.png') }}"> </div>
         <div class="title"><img class="home-logo" src="{{ URL::asset('_img/comet.png') }}"> Free and For Sale</div>
+        @include('layouts.partials.alerts')
         @yield('content')
     </div>
 </div>

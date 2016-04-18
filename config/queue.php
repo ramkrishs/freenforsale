@@ -42,6 +42,13 @@ return [
             'expire' => 60,
         ],
 
+        'database' => [
+            'driver' => 'mongodb',
+            'table' => 'jobs',
+            'queue' => 'default',
+            'expire' => 60,
+        ],
+
         'beanstalkd' => [
             'driver' => 'beanstalkd',
             'host' => 'localhost',
@@ -53,7 +60,7 @@ return [
             'driver' => 'sqs',
             'key' => 'your-public-key',
             'secret' => 'your-secret-key',
-            'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-account-id',
+            'prefix' => 'https://sqs.us-east-1.amazonaws.com/your-users-id',
             'queue' => 'your-queue-name',
             'region' => 'us-east-1',
         ],

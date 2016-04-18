@@ -19,8 +19,30 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function signup()
+    public function getSignup()
     {
         return view('register');
+    }
+
+    public function home()
+    {
+        return view('home');
+    }
+    
+    public function buy()
+    {
+        return view('products.buy');
+    }
+    public function sell()
+    {
+        return view('products.sell');
+    }
+    public function profile()
+    {
+        return view('users.profile');
+    }
+    public function settings()
+    {
+        return view('users.settings');
     }
 }
