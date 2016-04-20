@@ -6,11 +6,11 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class User extends Eloquent implements Authenticatable
+class Profile extends Eloquent
 {
-    use AuthenticableTrait;
 
-    protected $collection = 'users';
+
+    protected $collection = 'products';
     /**
      * The attributes that are mass assignable.
      *
@@ -25,25 +25,7 @@ class User extends Eloquent implements Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = [ ];
 
-    public function getName()
-    {
-            if($this->name)
-            {
-                return "{$this->name}";
-
-            }
-
-        return null;
-    }
-
-    public function getNameOrUserName()
-    {
-        return $this->getName() ?: $this->username;
-    }
-
-
+    
 }

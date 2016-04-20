@@ -17,7 +17,7 @@
                     </ul>
                     <h3>User</h3>
                     <ul class="">
-                        <li><a class="" href="{{URL::to('/user/profile')}}">Profile</a></li>
+                        <li><a class="" href="{{ route('profile.index',['username'=>Auth::user()->username])}}">Profile</a></li>
                         <li><a class="" href="{{URL::to('/user/preference')}}">Preference</a></li>
 
                     </ul>

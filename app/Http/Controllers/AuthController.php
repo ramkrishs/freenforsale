@@ -22,15 +22,13 @@ class AuthController extends Controller
 
     public function doRegister(Request $request)
     {
-
-
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'username' => 'required|max:20',
             'email' => 'required|unique:users|email|max:255',
             'password' => 'required|min:6',
         ]);
         $user = new User;
-        $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = Hash::make(Input::get('password'));
         $user->save();
@@ -45,12 +43,7 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
-//        $credentials = Input::only('email', 'password');
-//        if (Auth::attempt($credentials)) {
-//            $name = Auth::user()->name;
-//            return Redirect::intended('home')->with('name',$name);
-//        }
-//        return Redirect::to('login');
+
         $this->validate($request, [
             'email' => 'required',
             'password' => 'required',

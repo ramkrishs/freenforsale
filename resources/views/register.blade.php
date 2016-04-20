@@ -15,13 +15,13 @@
 
             <div class='form'>
                 <div class='field '>
-                    <input class='placeholder-input {{ $errors->has('name') ? 'has-error' :'' }}' name="name" id='name'
+                    <input class='placeholder-input {{ $errors->has('username') ? 'has-error' :'' }}' name="username" id='username'
                            type='text'
-                           value="{{Request::old('name') ?: ''}}">
-                    @if($errors->has('name'))
-                        <div class="error">{{$errors->first('name')}}</div>
+                           value="{{Request::old('username') ?: ''}}">
+                    @if($errors->has('username'))
+                        <div class="error">{{$errors->first('username')}}</div>
                     @endif
-                <label class='placeholder-label' for='name'>Full name</label>
+                <label class='placeholder-label' for='name'>Username</label>
             </div>
             <div class='field'>
                 <input class='placeholder-input {{ $errors->has('email') ? 'has-error' :'' }}' name="email" id='email'

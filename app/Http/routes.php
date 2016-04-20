@@ -49,13 +49,31 @@ Route::get('logout', [
     'as' => 'auth.signout',
 ]);
 
+
+Route::get('/profile/edit',[
+    'uses' =>'UserController@getEdit',
+    'as' => 'user.profile',
+    'middleware' => ['auth'],
+]);
+
+Route::post('/profile/edit',[
+    'uses'=> 'UserController@updateProfile',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/user/{username}',[
+    'uses' =>'UserController@getUser',
+    'as' => 'profile.index'
+]);
+
+
 Route::get('home', 'MainController@home');
 
 Route::get('buy', 'MainController@buy');
 
 Route::get('sell', 'MainController@sell');
 
-Route::get('/user/profile', 'UserController@profile');
 
 Route::get('/user/preference', 'UserController@settings');
 

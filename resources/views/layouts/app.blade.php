@@ -14,6 +14,7 @@
           type='text/css'>
 
     <!-- Styles -->
+    <link href="{{ URL::asset('_css/home.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('_css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('_css/main.css') }}">
 
@@ -52,7 +53,7 @@
                         @if (Auth::guest())
                             Guest
                         @else
-                            {{ ucfirst(Auth::user()->name) }}
+                            {{ ucfirst(Auth::user()->getNameOrUserName()) }}
                         @endif
                     </b>
                     <span class="caret"></span></a>
@@ -82,9 +83,13 @@
 
 
                                         <div class="form-group">
+                                            <a class="form-control btn btn-success"
+                                               href="{{ route('profile.index',['username'=>Auth::user()->username])}}">View Profile</a>
+                                        </div>
+                                        <div class="form-group">
 
                                             <a class="form-control btn btn-success"
-                                               href="{{ URL::to('/user/profile')}}">Profile</a>
+                                               href="{{ route('user.profile')}}">Edit Profile</a>
                                         </div>
                                         <div class="form-group">
                                             <a class="form-control btn btn-success"
@@ -98,7 +103,7 @@
                             </div>
                             <div class="bottom text-center">
                                 @if (Auth::guest())
-                                    New here ? <a href="#"><b>Sign Up</b></a>
+                                    New here ? <a href="{{ route('auth.signup')}}"><b>Sign Up</b></a>
                                 @else
                                     Want to logout ? <a href="{{ route('auth.signout')}}"><b>Logout</b></a>
                                 @endif
@@ -117,6 +122,7 @@
         <!-- JavaScripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('_js/main.js') }}"></script>
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

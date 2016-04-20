@@ -5,35 +5,45 @@
         <div class="row">
 
             <div class="col-md-12 ">
+                <div class="update-profile">
+                    <form action="">
+                        <!--  General -->
+                        <div class="form-group">
+                            <h2 class="heading">
+                                Change your password:
+                            </h2>
 
-                <div class="tab-content">
-                    <div class="tab-pane fade in active" id="new">
-                        <br>
-                        <fieldset>
+                            <div class="controls">
+                                <input class="floatLabel" id="password" name="password" type="text">
+                                <label for="password">
+                                    Password
+                                </label>
+                                </input>
+                            </div>
+                            <div class="controls">
+                                <input class="floatLabel" id="confirmpass" name="confirmpass" type="tel">
+                                <label for="confirmpass">
+                                    Confirm password
+                                </label>
+                                </input>
+                            </div>
+
+                            <!--  Details -->
                             <div class="form-group">
-                                <div class="right-inner-addon">
 
-                                    <input class="form-control input-lg" placeholder="Current Password" type="password">
+                                <div class="controls">
+                                    <button class="col-1-4" type="submit" value="Submit">
+                                        <strong>
+                                            Submit
+                                        </strong>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="right-inner-addon">
-
-                                    <input class="form-control input-lg" placeholder="New Password" type="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="right-inner-addon">
-
-                                    <input class="form-control input-lg" placeholder="Confirm Password" id=""
-                                           type="password">
-                                </div>
-                            </div>
-                        </fieldset>
-                        <hr>
-                        <button class="btn btn-primary btn-lg btn-block">Change Password</button>
-                    </div>
+                            <!-- /.form-group -->
+                        </div>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
