@@ -4,26 +4,24 @@
 
     <div class="Box row">
         <!-- left column -->
+        <form role="form" method="POST" action="{{ route('user.profile') }}" enctype="multipart/form-data">
         <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="text-center">
-                <img src="https://avatars3.githubusercontent.com/u/2312369?v=3&s=140"
-                     class="avatar img-circle img-thumbnail" alt="avatar">
+
+                @if(Auth::user()->profilepic)
+                    <img src="{{URL::asset('images/'.Auth::user()->profilepic)}}"
+                         class="avatar img-circle img-thumbnail" alt="avatar">
+                @else
+                    <img src="{{URL::asset('images/profilepic.jpg')}}"
+                         class="avatar img-circle img-thumbnail" alt="avatar">
+                @endif
                 <h6>Upload a different photo...</h6>
-                <input type="file" class="text-center center-block well well-sm">
+                <input type="file" name="image" class="">
             </div>
         </div>
 
         <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-            {{--<div class="alert alert-info alert-dismissable">--}}
-            {{--<a class="panel-close close" data-dismiss="alert">×</a>--}}
-            {{--<i class="fa fa-coffee"></i>--}}
-            {{--This is an <strong>.alert</strong>. Use this to show important messages to the user.--}}
-            {{--</div>--}}
-
-
-
             <div class="update-profile">
-                <form role="form" method="POST" action="{{ route('user.profile') }}">
                 <!--  General -->
                     <div class="form-group">
                         <h2 class="heading">
@@ -94,9 +92,9 @@
                         </div>
                         <!-- /.form-group -->
                     </div>
-                </form>
             </div>
         </div>
+        </form>
     </div>
 
 @endsection

@@ -169,6 +169,30 @@ h1, h2, h3, h4, h5 {
 .product-img {
     width: 100%;
 }
+.pro-pic{
+    position: absolute;
+    top: -90px;
+}
+.pro-data{
+    margin-top: 40px;
+    font-weight: 300;
+}
+.profiles{
+
+    font-weight: 300;
+}
+body{
+    font-family: 'Lora', sans-serif;
+}
+.fa-phone{
+    color: #ec971f;
+}
+.fa-envelope-o {
+    color: #31b0d5;
+}
+.fa-map-marker{
+    color: #8BC34A;
+}
 
 /* Media Queries */
 @media (max-width: 768px) {

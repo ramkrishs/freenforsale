@@ -20,12 +20,14 @@ class CreateProductsTable extends Migration
             $table->boolean('isWish')->nullable();
             $table->string('seller');
             $table->string('buyer');
+            $table->string('category');
+            $table->string('productImg');
             $table->timestamps();
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations.  
      *
      * @return void
      */

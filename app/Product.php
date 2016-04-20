@@ -6,7 +6,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class Profile extends Eloquent
+class Product extends Eloquent
 {
 
 
@@ -17,7 +17,7 @@ class Profile extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'name', 'email','username', 'password', 'address', 'phone',
+        'name', 'price','description', 'isWish', 'seller', 'buyer','category','productImg'
     ];
 
     /**

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class=" container">
+        @include('layouts.partials.alerts')
         <div class="row">
             <header>
                 <h1 class="col-xs-12 sideb">Settings</h1>

@@ -68,11 +68,26 @@ Route::get('/user/{username}',[
 ]);
 
 
+Route::get('/products/add',[
+   'uses' => 'ProductController@getProduct',
+   'as' => 'product.add'
+]);
+
+Route::post('/products/add',[
+    'uses' => 'ProductController@postProduct',
+
+]);
+
+Route::get('/products/view', [
+    'uses' => 'ProductController@getProducts',
+    'as' => 'product.view'
+]);
+
 Route::get('home', 'MainController@home');
 
-Route::get('buy', 'MainController@buy');
 
-Route::get('sell', 'MainController@sell');
+//
+//Route::get('sell', 'MainController@sell');
 
 
 Route::get('/user/preference', 'UserController@settings');
