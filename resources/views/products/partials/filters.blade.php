@@ -1,4 +1,4 @@
-<div class="filters sidebar ">
+<div class="filters ">
     <div class="" >
         <div class="">Filter Products <a class="search-filter-clear-all">clear <i class="fa fa-eraser"></i></a></div>
         <div class="" id="search-filter-elements">

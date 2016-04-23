@@ -83,6 +83,11 @@ Route::get('/products/view', [
     'as' => 'product.view'
 ]);
 
+Route::get('/products/view/{name}', [
+    'uses' => 'ProductController@getProductByProductName',
+    'as' => 'product.searchByName'
+]);
+
 Route::get('home', 'MainController@home');
 
 

@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <div class=" container">
+    <div class=" container product-container">
         @include('layouts.partials.alerts')
         <div class="row">
             <header>
-                <h1 class="col-xs-12 sideb">Settings</h1>
+                <h1 class="col-xs-12 ">Settings</h1>
             </header>
         </div>
         <div class="row">
-            <div class="col-xs-2">
-                <nav class="sidebar">
+            <div class="col-xs-2 sidebar">
+                <nav class="">
                     <h3>Account</h3>
                     <ul class="">
                         <li><a class="" href="{{URL::to('/account/sold')}}">Sold Products</a></li>

@@ -29,7 +29,7 @@ class ProductController extends Controller
     {
 
         $this->validate($request, [
-            'name' => 'required|alpha|max:255',
+            'name' => 'required|max:255',
             'price' => 'required|numeric',
             'description' => 'required|max:300',
             'category' => 'required',
@@ -40,7 +40,8 @@ class ProductController extends Controller
         if($request->file('image'))
         {
             $image = $request->file('image');
-            $filename = $seller.$request->input('name').'.'.$image->getClientOriginalExtension();
+            $name = str_replace(' ', '', $request->input('name'));
+            $filename = $seller.$name.'.'.$image->getClientOriginalExtension();
             $path = public_path('images/').$filename;
             Image::make($image->getRealPath())
                 ->resize(300,300,
@@ -62,8 +63,40 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        $products = Product::all();
+        $products = Product::paginate(3);
 
         return view('products.buy')->with('products',$products);
+    }
+
+    public function getProductsByName()
+    {
+        $products = Product::orderBy('name')->paginate(3);
+        return view('products.buy')->with('products',$products);
+    }
+
+    public function getProductsByPrice($isDesc)
+    {
+        if($isDesc)
+        {
+            $products = Product::orderBy('price','DESC')->paginate(3);
+        }
+        else
+        {
+            $products = Product::orderBy('price')->paginate(3);
+        }
+
+        return view('products.buy')->with('products',$products);
+    }
+
+
+    public function  getProductByProductName($prodName)
+    {
+        $product = Product::where('name',$prodName)->first();
+
+        if(!$product){
+            abort(404);
+        }
+        dd($product);
+//        return view('users.viewProfile')->with('user',$user);
     }
 }

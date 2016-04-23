@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->integer('price');
+            //remove iswish
             $table->boolean('isWish')->nullable();
             $table->string('seller');
             $table->string('buyer');

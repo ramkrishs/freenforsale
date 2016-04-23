@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('title','Free and For Sale - Buy')
+
 @section('content')
-    <div class="container">
+    @include('layouts.partials.searchnav')
+    <div class="container product-container">
         @include('layouts.partials.alerts')
         <div class="row">
             <div class="col-xs-2">
@@ -15,5 +17,11 @@
                 </div>
             </div>
         </div>
+        <div class="col-xs-12 col-xs-offset-6">
+            {!! $products->links() !!}
+
+        </div>
+
     </div>
+
 @endsection

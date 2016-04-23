@@ -29,93 +29,10 @@
         }
     </style>
 </head>
-<body id="app-layout">
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"></a>
-        </div>
+<body>
+@include('layouts.partials.mainnav')
 
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text">Hello</p></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <b>
-                        @if (Auth::guest())
-                            Guest
-                        @else
-                            {{ ucfirst(Auth::user()->getNameOrUserName()) }}
-                        @endif
-                    </b>
-                    <span class="caret"></span></a>
-                <ul id="login-dp" class="dropdown-menu">
-                    <li>
-                        <div class="row">
-                            <div class="col-md-12">
-                                @if (Auth::guest())
-                                    <form class="form" role="form" method="POST" action="{{ route('auth.signin') }}">
-                                        {!! csrf_field() !!}
-                                        <div class="form-group">
-                                            <label class="sr-only" for="email">Email address</label>
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                   placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password"
-                                                   placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                        </div>
-                                    </form>
-                                @else
-                                    <div class="form">
-
-
-                                        <div class="form-group">
-                                            <a class="form-control btn btn-success"
-                                               href="{{ route('profile.index',['username'=>Auth::user()->username])}}">View Profile</a>
-                                        </div>
-                                        <div class="form-group">
-
-                                            <a class="form-control btn btn-success"
-                                               href="{{ route('user.profile')}}">Edit Profile</a>
-                                        </div>
-                                        <div class="form-group">
-                                            <a class="form-control btn btn-success"
-                                               href="{{ URL::to('/user/preference')}}">Preference</a>
-
-                                        </div>
-
-
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="bottom text-center">
-                                @if (Auth::guest())
-                                    New here ? <a href="{{ route('auth.signup')}}"><b>Sign Up</b></a>
-                                @else
-                                    Want to logout ? <a href="{{ route('auth.signout')}}"><b>Logout</b></a>
-                                @endif
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 
 @yield('content')
 

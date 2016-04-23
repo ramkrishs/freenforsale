@@ -1,5 +1,5 @@
 <div class="Box list-group product-list-items">
-    <a href="#" class="product-item">
+    <a href="{{route('product.searchByName',['prodName'=>$product['name']])}}" class="product-item">
         <div class="col-md-3">
             <img class="product-img" src="{{URL::asset('images/'.$product['productImg'])}}" alt="">
         </div>
