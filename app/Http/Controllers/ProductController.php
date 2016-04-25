@@ -58,9 +58,9 @@ class ProductController extends Controller
         $product->seller = $seller;
         $product->save();
         return redirect()->route('product.view')->with('info', 'Your product details is now added ');
-        
-    }
 
+    }
+               
     public function getProducts()
     {
         $products = Product::paginate(3);
