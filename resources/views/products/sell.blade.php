@@ -2,7 +2,6 @@
 @section('title','Free and For Sale - Sell')
 
 @section('content')
-    @include('layouts.partials.searchnav')
     <div class="container product-container">
         <div class="row">
             <div class="col-xs-12 ">

@@ -63,7 +63,7 @@ class ProductController extends Controller
                
     public function getProducts()
     {
-        $products = Product::paginate(3);
+        $products = Product::whereNull('deleted_at')->paginate(3);
 
         return view('products.buy')->with('products',$products);
     }
@@ -99,4 +99,48 @@ class ProductController extends Controller
         dd($product);
 //        return view('users.viewProfile')->with('user',$user);
     }
+
+    public function  deleteProduct($prodName){
+        $product = Product::where(['name'=>$prodName,'seller'=>Auth::user()->username])
+                            ->first();
+        if (!$product)
+        {
+            abort(401);
+        }
+        $product->delete();
+
+        return redirect()->route('product.view')->with('danger','Your product is now removed');
+
+    }
+
+    public function  restoreProduct($prodName){
+        $product = Product::where(['name'=>$prodName,'seller'=>Auth::user()->username])
+            ->first();
+        if (!$product)
+        {
+            abort(401);
+        }
+        $product->restore();
+
+        return redirect()->route('product.view');
+
+    }
+
+
+    public function listMyProduct()
+    {
+        $products = Product::where(['seller'=>Auth::user()->username])->get();
+
+        dd($products);
+    }
+
+
+    public function listSoldProduct()
+    {
+        $products = Product::where(['seller'=>Auth::user()->username])
+                            ->whereNotNull('buyer')->get();
+        dd($products);
+
+    }
+    
 }

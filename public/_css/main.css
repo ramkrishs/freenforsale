@@ -94,9 +94,12 @@ Big Button
 */
 
 .main-container {
-    margin-left: 30%;
-}
 
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
 .main-container .btn-holder {
     margin-bottom: 50px;
     padding: 50px;
@@ -105,7 +108,7 @@ Big Button
     margin-top: 20px;
 }
 .main-container .btn {
-    width: 300px;
+    width: 100%;
     border-radius: 0px;
     border-bottom: 7px solid #4CAF50;
 }
@@ -167,7 +170,9 @@ h1, h2, h3, h4, h5 {
     font-size: 80%;
     width: 100px;
 }
-
+.main-logo{
+    width: 50px;
+}
 .hr-custom {
     width: 120%;
 }

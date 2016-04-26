@@ -83,12 +83,31 @@ Route::get('/products/view', [
     'as' => 'product.view'
 ]);
 
+Route::get('/products/view/myproduct', [
+    'uses' => 'ProductController@listMyProduct',
+    'as' => 'product.myProduct'
+]);
+
+Route::get('/products/view/soldproduct', [
+    'uses' => 'ProductController@listSoldProduct',
+    'as' => 'product.soldProduct'
+]);
+
 Route::get('/products/view/{name}', [
     'uses' => 'ProductController@getProductByProductName',
     'as' => 'product.searchByName'
 ]);
 
-Route::get('home', 'MainController@home');
+Route::get('/products/delete/{name}', [
+    'uses' => 'ProductController@deleteProduct',
+    'as' => 'product.delete'
+]);
+
+Route::get('home', [
+    'uses' => 'MainController@home',
+    'as' => 'home'
+]);
+
 
 
 //

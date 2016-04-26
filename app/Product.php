@@ -5,10 +5,11 @@ namespace App;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
 class Product extends Eloquent
 {
-
+    use SoftDeletes;
 
     protected $collection = 'products';
     /**
@@ -27,5 +28,7 @@ class Product extends Eloquent
      */
     protected $hidden = [ ];
 
+
+    protected $dates = ['deleted_at'];
     
 }

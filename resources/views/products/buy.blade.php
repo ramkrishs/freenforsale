@@ -17,6 +17,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xs-12 col-xs-offset-6">
             {!! $products->links() !!}
 

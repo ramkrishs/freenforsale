@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default " role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="col-xs-5">
         <div class="navbar-header">
+
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -9,13 +11,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"></a>
+            <a class="navbar-brand" href="#">
+                <a href="{{route('home')}}" ><img src="{{URL::asset('_img/logo.png')}}" class="main-logo" alt="free and for sale "></a>
+            </a>
+        </div>
+        </div>
+        <div class="col-xs-3">
+            <ul class="nav navbar-nav center-block">
+                <li><a class="btn" href="{{route('product.view')}}">Buy</a></li>
+                <li><a class="btn" href="{{route('home')}}">Home</a></li>
+                <li><a class="btn " href="{{route('product.add')}}">Sell</a></li>
+            </ul>
         </div>
         <div class="col-xs-4">
-
-
-        </div>
-        <ul class="nav navbar-nav navbar-left"></ul>
         <ul class="nav navbar-nav navbar-right">
 
             <li class="dropdown">
@@ -84,6 +92,7 @@
                 </ul>
             </li>
         </ul>
+        </div>
     </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
