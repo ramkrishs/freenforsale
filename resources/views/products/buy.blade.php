@@ -11,9 +11,14 @@
             </div>
             <div class="col-xs-10">
                 <div class="product-lists">
-                    @foreach($products as $product)
-                        @include('products.partials.productblock')
-                    @endforeach
+
+                    @if(!$products->count())
+                        <p>Sorry no results found!!</p>
+                    @else
+                        @foreach($products as $product)
+                            @include('products.partials.productblock')
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>

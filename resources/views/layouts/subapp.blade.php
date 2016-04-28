@@ -14,6 +14,7 @@
                     <ul class="">
                         <li><a class="" href="{{URL::to('/account/sold')}}">Sold Products</a></li>
                         <li><a class="" href="{{URL::to('/account/bought')}}">Bought Products</a></li>
+                        <li><a class="" href="{{route('user.myproduct')}}">My Products</a></li>
                         <li><a class="" href="{{URL::to('/account/wishlist')}}">Wishlist</a></li>
                     </ul>
                     <h3>User</h3>

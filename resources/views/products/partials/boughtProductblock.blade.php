@@ -9,9 +9,10 @@
             <div class="col-md-10">
                 <h5>Description</h5>
                 <p class="list-group-item-text">{{$product['description']}}</p>
+                <h5 class="">Price: <span class="product-price">${{$product['price']}}</span></h5>
             </div>
             <div class="col-md-2">
-                @include('products.partials.viewProductBtn')
+
             </div>
 
         </div>

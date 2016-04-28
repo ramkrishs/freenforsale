@@ -44,7 +44,7 @@ class ProductController extends Controller
             $filename = $seller.$name.'.'.$image->getClientOriginalExtension();
             $path = public_path('images/').$filename;
             Image::make($image->getRealPath())
-                ->resize(300,300,
+                ->resize(250,250,
                     function ($constraint) {
                         $constraint->aspectRatio();
                     })
@@ -56,6 +56,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->description = $request->input('description');
         $product->seller = $seller;
+        $product->category = $request->input('category');
         $product->save();
         return redirect()->route('product.view')->with('info', 'Your product details is now added ');
 
@@ -63,28 +64,46 @@ class ProductController extends Controller
                
     public function getProducts()
     {
-        $products = Product::whereNull('deleted_at')->paginate(3);
+        $products = Product::whereNull('deleted_at')
+                    ->whereNull('buyer')
+                    ->where('seller','!=',Auth::user()->username)
+                    ->paginate(3);
 
         return view('products.buy')->with('products',$products);
     }
 
     public function getProductsByName()
     {
-        $products = Product::orderBy('name')->paginate(3);
+        $products = Product::orderBy('name')
+                        ->whereNull('deleted_at')
+                        ->where('seller','!=',Auth::user()->username)
+                        ->paginate(3);
+        return view('products.buy')->with('products',$products);
+    }
+    public function getProductsByNameinDesc()
+    {
+        $products = Product::orderBy('name','DESC')
+                            ->whereNull('deleted_at')
+                            ->where('seller','!=',Auth::user()->username)
+                            ->paginate(3);
         return view('products.buy')->with('products',$products);
     }
 
-    public function getProductsByPrice($isDesc)
+    public function getProductsByPriceinDesc()
     {
-        if($isDesc)
-        {
-            $products = Product::orderBy('price','DESC')->paginate(3);
-        }
-        else
-        {
-            $products = Product::orderBy('price')->paginate(3);
-        }
-
+        $products = Product::orderBy('price','DESC')
+            ->whereNull('deleted_at')
+            ->where('seller','!=',Auth::user()->username)
+            ->paginate(3);
+//        dd($products->price);
+        return view('products.buy')->with('products',$products);
+    }
+    public function getProductsByPrice()
+    {
+        $products = Product::orderBy('price')
+            ->whereNull('deleted_at')
+            ->where('seller','!=',Auth::user()->username)
+            ->paginate(3);
         return view('products.buy')->with('products',$products);
     }
 
@@ -100,39 +119,10 @@ class ProductController extends Controller
 //        return view('users.viewProfile')->with('user',$user);
     }
 
-    public function  deleteProduct($prodName){
-        $product = Product::where(['name'=>$prodName,'seller'=>Auth::user()->username])
-                            ->first();
-        if (!$product)
-        {
-            abort(401);
-        }
-        $product->delete();
-
-        return redirect()->route('product.view')->with('danger','Your product is now removed');
-
-    }
-
-    public function  restoreProduct($prodName){
-        $product = Product::where(['name'=>$prodName,'seller'=>Auth::user()->username])
-            ->first();
-        if (!$product)
-        {
-            abort(401);
-        }
-        $product->restore();
-
-        return redirect()->route('product.view');
-
-    }
+    
 
 
-    public function listMyProduct()
-    {
-        $products = Product::where(['seller'=>Auth::user()->username])->get();
-
-        dd($products);
-    }
+    
 
 
     public function listSoldProduct()

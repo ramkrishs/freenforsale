@@ -30,3 +30,38 @@ $(".placeholder-input").on("blur", function() {
 });
 
 
+(function($) {
+
+    $("#sortby").change(function() {
+        var val = $('#sortby').val();
+        if(val == 2){
+            window.location.href = 'viewbyDs';
+        }
+        else if(val == 1){
+            window.location.href = 'viewbyAs';
+        }
+        else if(val == 3){
+            window.location.href = 'viewbyPrice';
+        }
+        else if(val == 4){
+            window.location.href = 'viewbyPriceDs';
+        }
+    });
+
+
+    
+
+})(jQuery);
+
+
+$(document).ready(function($) {
+
+    $('#password').strength({
+        strengthClass: 'strength',
+        strengthMeterClass: 'strength_meter',
+        strengthButtonClass: 'button_strength',
+        strengthButtonText: 'Show Password',
+        strengthButtonTextToggle: 'Hide Password'
+    });
+
+});

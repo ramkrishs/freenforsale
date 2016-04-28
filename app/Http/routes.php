@@ -10,7 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+/*...
+Login Routes
 
+*/
 Route::get('/', [
     'uses' => 'MainController@index',
     'as' => 'index',
@@ -49,6 +52,11 @@ Route::get('logout', [
     'as' => 'auth.signout',
 ]);
 
+/*...
+Profile Routes
+
+*/
+
 
 Route::get('/profile/edit',[
     'uses' =>'UserController@getEdit',
@@ -67,6 +75,10 @@ Route::get('/user/{username}',[
     'as' => 'profile.index'
 ]);
 
+/*...
+Product Routes
+
+*/
 
 Route::get('/products/add',[
    'uses' => 'ProductController@getProduct',
@@ -84,7 +96,7 @@ Route::get('/products/view', [
 ]);
 
 Route::get('/products/view/myproduct', [
-    'uses' => 'ProductController@listMyProduct',
+    'uses' => 'AccountController@listMyProduct',
     'as' => 'product.myProduct'
 ]);
 
@@ -98,9 +110,25 @@ Route::get('/products/view/{name}', [
     'as' => 'product.searchByName'
 ]);
 
+Route::get('/products/edit/{name}', [
+    'uses' => 'AccountController@getProductByProductName',
+    'as' => 'product.edit'
+]);
+
+Route::post('/products/edit/{name}', [
+    'uses' => 'AccountController@editProduct',
+    
+]);
+
+
 Route::get('/products/delete/{name}', [
-    'uses' => 'ProductController@deleteProduct',
+    'uses' => 'AccountController@deleteProduct',
     'as' => 'product.delete'
+]);
+
+Route::get('/products/restore/{name}', [
+    'uses' => 'AccountController@restoreProduct',
+    'as' => 'product.restore'
 ]);
 
 Route::get('home', [
@@ -108,15 +136,60 @@ Route::get('home', [
     'as' => 'home'
 ]);
 
+Route::get('/products/viewbyAs', [
+    'uses' => 'ProductController@getProductsByName',
+    'as' => 'product.viewByAz'
+]);
+
+Route::get('/products/viewbyDs', [
+    'uses' => 'ProductController@getProductsByNameinDesc',
+    'as' => 'product.viewByzA'
+]);
+
+Route::get('/products/viewbyPrice', [
+    'uses' => 'ProductController@getProductsByPrice',
+    'as' => 'product.viewBylh'
+]);
+
+Route::get('/products/viewbyPriceDs', [
+    'uses' => 'ProductController@getProductsByPriceinDesc',
+    'as' => 'product.viewByhl'
+]);
 
 
-//
-//Route::get('sell', 'MainController@sell');
+Route::get('/account/products', [
+    'uses'=>'AccountController@listMyProduct',
+    'as' => 'user.myproduct'
+
+]);
 
 
-Route::get('/user/preference', 'UserController@settings');
+Route::get('/account/bought', [
+    'uses'=>'AccountController@bought',
+    'as' => 'user.bought'
 
-Route::get('/account/sold', 'AccountController@sold');
-Route::get('/account/bought', 'AccountController@bought');
+]);
+
+Route::get('/account/sold', [
+    'uses'=>'AccountController@sold',
+    'as' => 'user.sold'
+
+]);
+
 Route::get('/account/wishlist', 'AccountController@wishlist');
+
+/*...
+search Routes
+
+*/
+Route::get('/products/search', [
+    'uses' => 'ProductController@getProducts',
+    'as' => 'product.search'
+]);
+
+Route::post('/products/search', [
+    'uses' => 'SearchController@getProductsByKeyword',
+
+]);
+
 

@@ -50,8 +50,6 @@ class UserController extends Controller
         ]);
 
 
-
-
         if($request->file('image'))
         {
             $image = $request->file('image');

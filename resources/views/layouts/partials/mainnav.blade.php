@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @if (Auth::guest())
-                                    <form class="form" role="form" method="POST" action="{{ route('auth.signin') }}">
+                                    <form class="form" role="form" method="POST" class="form" action="{{ route('auth.signin') }}">
                                         {!! csrf_field() !!}
                                         <div class="form-group">
                                             <label class="sr-only" for="email">Email address</label>
@@ -54,32 +54,28 @@
                                                    placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            <button type="submit" class=" form-control btn btn-primary btn-block">Sign in</button>
                                         </div>
                                     </form>
                                 @else
                                     <div class="form">
-
-
                                         <div class="form-group">
                                             <a class="form-control btn btn-success"
                                                href="{{ route('profile.index',['username'=>Auth::user()->username])}}">View Profile</a>
                                         </div>
                                         <div class="form-group">
-
                                             <a class="form-control btn btn-success"
                                                href="{{ route('user.profile')}}">Edit Profile</a>
                                         </div>
                                         <div class="form-group">
                                             <a class="form-control btn btn-success"
                                                href="{{ URL::to('/user/preference')}}">Preference</a>
-
                                         </div>
-
-
                                     </div>
                                 @endif
                             </div>
+                            <br>
+                            <br>
                             <div class="bottom text-center">
                                 @if (Auth::guest())
                                     New here ? <a href="{{ route('auth.signup')}}"><b>Sign Up</b></a>

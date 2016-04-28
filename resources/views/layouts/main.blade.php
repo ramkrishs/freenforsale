@@ -21,6 +21,7 @@
 <script src="https://code.jquery.com/jquery-1.12.3.min.js"
         integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
         crossorigin="anonymous"></script>
+<script src="{{URL::asset('_js/strength.min.js')}}" ></script>
 <script src="{{ URL::asset('_js/bootstrap.min.js')}}" ></script>
 <script src="{{ URL::asset('_js/main.js') }}"></script>
 </body>

@@ -15,7 +15,8 @@
         <div class="col-xs-3">
             <div class="form-group form-inline pull-right">
                 <label for="sortby" class="">Sort by:</label>
-                <select name="sortby" class="form-control">
+                <select id="sortby" name="sortby" class="form-control">
+                    <option value="0">Select Option</option>
                     <option value="1">Ascending order</option>
                     <option value="2">Decending order</option>
                     <option value="3">Price: Low-High</option>

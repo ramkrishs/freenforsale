@@ -96,6 +96,9 @@ Big Button
 .main-container {
 
 }
+.btn-block{
+    margin-bottom: 10px;
+}
 .col-centered{
     float: none;
     margin: 0 auto;
