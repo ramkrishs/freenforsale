@@ -11,12 +11,15 @@
                 <h5>Description</h5>
                 <p class="list-group-item-text">{{$product['description']}}</p>
                 <h5 class="text-left">Price: <span class="product-price">${{$product['price']}}</span></h5>
-                @if(\App\Interest::productCount($product['name']))
-                    <a href="{{route('interest.view',['prodname'=>$product['name']])}}" class="btn btn-warning interest-btn btn-block">Shown interest <span class="badge">{{\App\Interest::productCount($product['name'])}}</span></a>
+                @if(\App\Product::isSold($product['name']))
+                    <a class="btn btn-info" disabled>Sold <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
                 @else
-                    <a href="{{route('interest.view',['prodname'=>$product['name']])}}" class="btn btn-warning interest-btn btn-block">Shown interest <span class="badge">0</span></a>
+                    @if(\App\Interest::productCount($product['name']))
+                        <a href="{{route('interest.view',['prodname'=>$product['name']])}}" class="btn btn-warning interest-btn btn-block">Shown interest <span class="badge">{{\App\Interest::productCount($product['name'])}}</span></a>
+                    @else
+                        <a href="{{route('interest.view',['prodname'=>$product['name']])}}" class="btn btn-warning interest-btn btn-block">Shown interest <span class="badge">0</span></a>
+                    @endif
                 @endif
-
             </div>
             <div class="col-md-2">
                 @include('products.partials.editProductBtn')

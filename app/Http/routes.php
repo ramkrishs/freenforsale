@@ -210,7 +210,7 @@ Route::get('/products/search', [
 ]);
 
 Route::post('/products/search', [
-    'uses' => 'SearchController@getProductsByKeyword',
+    'uses' => 'SearchController@getProductsByCombination',
 
 ]);
 

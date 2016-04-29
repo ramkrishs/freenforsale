@@ -24,6 +24,6 @@
         </div>
     </div>
     <div class="col-xs-12 col-xs-offset-4">
-        {{--{!! $products->links() !!}--}}
+
     </div>
 @endsection

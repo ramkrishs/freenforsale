@@ -23,7 +23,7 @@ class AuthController extends Controller
     public function doRegister(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|max:20',
+            'username' => 'required|unique:users|max:20',
             'email' => 'required|unique:users|email|max:25',
             'password' => 'required|min:6',
         ]);

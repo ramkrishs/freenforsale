@@ -68,8 +68,6 @@
                                                href="{{ route('user.profile')}}">Edit Profile</a>
                                         </div>
                                         <div class="form-group">
-                                            <a class="form-control btn btn-success"
-                                               href="{{ URL::to('/user/preference')}}">Preference</a>
                                         </div>
                                     </div>
                                 @endif

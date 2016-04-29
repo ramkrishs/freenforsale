@@ -21,7 +21,7 @@
                     <div >
                         <div class="clearfix"></div>
                         <div class="">
-                            <input type="checkbox" name="all" id=value="" checked="checked">
+                            <input type="checkbox" name="All"  checked="checked">
                             <label for="search-type-any" class="default">All</label>
                         </div>
                         <div class="">
@@ -60,12 +60,12 @@
                     <div >
                         <div class=" input-group ">
                             <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" placeholder="Min Price"/>
+                            <input type="text" class="form-control" placeholder="Min Price" name="min_price"/>
                         </div>
                         <br>
                         <div class=" input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" placeholder="Max Price"/>
+                            <input type="text" class="form-control" placeholder="Max Price" name="max_price"/>
                         </div>
                     </div>
                 </div>

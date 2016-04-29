@@ -141,7 +141,7 @@ class ProductController extends Controller
         $product->buyer = $buyer;
         $product->save();
 
-        return redirect()->back();
+        return redirect()->route('product.myProduct');
     }
     
 }

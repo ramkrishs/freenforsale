@@ -51,7 +51,8 @@ class Interest extends Eloquent
     }
     public static function productCount($prodname)
     {
-        $count = Interest::where(['products'=>$prodname])->count();
+        $count = Interest::where(['products'=>$prodname])
+                ->whereNull('deleted_at')->count();
 
         return $count;
     }

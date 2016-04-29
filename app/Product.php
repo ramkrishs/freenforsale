@@ -26,6 +26,10 @@ class Product extends Eloquent
      *
      * @var array
      */
+
+    protected $casts = [
+        'price' => 'integer'
+    ];
     protected $hidden = [ ];
 
 
@@ -42,5 +46,18 @@ class Product extends Eloquent
 
         return $status;
     }
+    public static function productExist($productName)
+    {
+        $status = false;
+        $product = Product::whereNull('deleted_at')->where('name',$productName)->first();
+        if ($product)
+        {
+            $status = true;
+        }
+
+        return $status;
+    }
+
+
     
 }

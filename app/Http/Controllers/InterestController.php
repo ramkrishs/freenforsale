@@ -51,7 +51,9 @@ class InterestController extends Controller
     
     public function showInterest($prodname)
     {
-        $users = Interest::where('products',$prodname)->get();
+        $users = Interest::where('products',$prodname)
+            ->whereNull('deleted_at')
+            ->get();
 
         $uarr=array();
         $userdetails=array();
