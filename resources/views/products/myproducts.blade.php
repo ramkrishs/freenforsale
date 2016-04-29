@@ -8,7 +8,7 @@
             <div class="col-xs-12">
                 <div class="product-lists">
                     @if(!$products->count())
-                        <p>No result found Sorry</p>
+                        <p>No Products found Sorry</p>
                     @else
                         @foreach($products as $product)
                             @include('products.partials.editProductblock')

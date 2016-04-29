@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Interest;
 use Illuminate\Http\Request;
 
 use App\User;
@@ -28,12 +29,9 @@ class AccountController extends Controller
         $products = Product::where(['seller'=>Auth::user()->username])
             ->whereNull('deleted_at')
             ->paginate(3);
-
-
-//        dd($products);
         return view('products.myproducts')->with('products',$products);
     }
-
+   
     public function bought()
     {
         $products = Product::where(['buyer'=>Auth::user()->username])
@@ -98,7 +96,8 @@ class AccountController extends Controller
 
     public function wishlist()
     {
-        return view('account.wishlist');
+        $products = Product::paginate(8);
+        return view('account.wishlist')->with('products',$products);
     }
 
 

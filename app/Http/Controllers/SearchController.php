@@ -15,12 +15,23 @@ use Intervention\Image\Facades\Image;
 class SearchController extends Controller
 {
 
-   public function getProductsByKeyword(Request $request){
+    public function getProductsByKeyword(Request $request){
 
        $search = Product::where('name',$request->input('query'))->paginate(3);
 
        return view('products.buy')->with('products',$search);
 
-   }
+    }
+
+    public function getProductsByCategory($category){
+
+        $search = Product::where('category',$category)
+                    ->whereNull('deleted_at')
+                    ->where('seller','!=',Auth::user()->username)
+                    ->paginate(3);
+
+        return view('products.buy')->with('products',$search);
+
+    }
     
 }

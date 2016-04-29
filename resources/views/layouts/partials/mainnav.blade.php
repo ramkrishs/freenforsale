@@ -54,14 +54,14 @@
                                                    placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class=" form-control btn btn-primary btn-block">Sign in</button>
+                                            <button type="submit" class=" form-control btn btn-warning ">Sign in</button>
                                         </div>
                                     </form>
                                 @else
                                     <div class="form">
                                         <div class="form-group">
                                             <a class="form-control btn btn-success"
-                                               href="{{ route('profile.index',['username'=>Auth::user()->username])}}">View Profile</a>
+                                               href="{{ route('profile.index',['username'=>Auth::user()->username])}}">My Account</a>
                                         </div>
                                         <div class="form-group">
                                             <a class="form-control btn btn-success"
@@ -78,7 +78,7 @@
                             <br>
                             <div class="bottom text-center">
                                 @if (Auth::guest())
-                                    New here ? <a href="{{ route('auth.signup')}}"><b>Sign Up</b></a>
+                                    New here ? <a class="" href="{{ route('auth.signup')}}"><b>Sign Up</b></a>
                                 @else
                                     Want to logout ? <a href="{{ route('auth.signout')}}"><b>Logout</b></a>
                                 @endif

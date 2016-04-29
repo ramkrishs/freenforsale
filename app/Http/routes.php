@@ -72,7 +72,9 @@ Route::post('/profile/edit',[
 
 Route::get('/user/{username}',[
     'uses' =>'UserController@getUser',
-    'as' => 'profile.index'
+    'as' => 'profile.index',
+    'middleware' => ['auth'],
+
 ]);
 
 /*...
@@ -82,27 +84,33 @@ Product Routes
 
 Route::get('/products/add',[
    'uses' => 'ProductController@getProduct',
-   'as' => 'product.add'
+   'as' => 'product.add',
+   'middleware' => ['auth'],
 ]);
 
 Route::post('/products/add',[
     'uses' => 'ProductController@postProduct',
+    'middleware' => ['auth'],
 
 ]);
 
 Route::get('/products/view', [
     'uses' => 'ProductController@getProducts',
-    'as' => 'product.view'
+    'as' => 'product.view',
+    'middleware' => ['auth'],
+
 ]);
 
 Route::get('/products/view/myproduct', [
     'uses' => 'AccountController@listMyProduct',
-    'as' => 'product.myProduct'
+    'as' => 'product.myProduct',
+    'middleware' => ['auth'],
 ]);
 
 Route::get('/products/view/soldproduct', [
     'uses' => 'ProductController@listSoldProduct',
-    'as' => 'product.soldProduct'
+    'as' => 'product.soldProduct',
+    'middleware' => ['auth'],
 ]);
 
 Route::get('/products/view/{name}', [
@@ -112,18 +120,21 @@ Route::get('/products/view/{name}', [
 
 Route::get('/products/edit/{name}', [
     'uses' => 'AccountController@getProductByProductName',
-    'as' => 'product.edit'
+    'as' => 'product.edit',
+    'middleware' => ['auth'],
 ]);
 
 Route::post('/products/edit/{name}', [
     'uses' => 'AccountController@editProduct',
+    'middleware' => ['auth'],
     
 ]);
 
 
 Route::get('/products/delete/{name}', [
     'uses' => 'AccountController@deleteProduct',
-    'as' => 'product.delete'
+    'as' => 'product.delete',
+    'middleware' => ['auth'],
 ]);
 
 Route::get('/products/restore/{name}', [
@@ -138,7 +149,8 @@ Route::get('home', [
 
 Route::get('/products/viewbyAs', [
     'uses' => 'ProductController@getProductsByName',
-    'as' => 'product.viewByAz'
+    'as' => 'product.viewByAz',
+
 ]);
 
 Route::get('/products/viewbyDs', [
@@ -159,24 +171,34 @@ Route::get('/products/viewbyPriceDs', [
 
 Route::get('/account/products', [
     'uses'=>'AccountController@listMyProduct',
-    'as' => 'user.myproduct'
+    'as' => 'user.myproduct',
+    'middleware' => ['auth'],
 
 ]);
 
 
 Route::get('/account/bought', [
     'uses'=>'AccountController@bought',
-    'as' => 'user.bought'
+    'as' => 'user.bought',
+    'middleware' => ['auth'],
 
 ]);
 
 Route::get('/account/sold', [
     'uses'=>'AccountController@sold',
-    'as' => 'user.sold'
+    'as' => 'user.sold',
+    'middleware' => ['auth'],
 
 ]);
 
-Route::get('/account/wishlist', 'AccountController@wishlist');
+Route::get('/account/wishlist', [
+    'uses'=>'AccountController@wishlist',
+    'as' => 'user.wishlist',
+    'middleware' => ['auth'],
+
+]);
+
+
 
 /*...
 search Routes
@@ -192,4 +214,101 @@ Route::post('/products/search', [
 
 ]);
 
+/*...
+Interest Routes
 
+*/
+
+Route::get('/products/addInterest/{prodname}', [
+    'uses' => 'InterestController@addInterest',
+    'as' => 'product.addinterest',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/products/isInterest/{prodname}', [
+    'uses' => 'InterestController@isInterest',
+    'as' => 'product.isinterest',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/products/showInterest', [
+    'uses' => 'InterestController@showProduct',
+    'as' => 'interest.showProduct',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/products/showCustomer/{prodname}', [
+    'uses' => 'InterestController@showCustomer',
+    'as' => 'interest.showCustomer',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/products/removeInterest/{prodname}', [
+    'uses' => 'InterestController@removeInterest',
+    'as' => 'product.removeInterest',
+    'middleware' => ['auth'],
+]);
+
+/*...
+wishlist Routes
+
+*/
+
+Route::get('/wishlist/add/{prodname}', [
+    'uses' => 'WishlistController@add',
+    'as' => 'wishlist.add',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/wishlist/remove/{prodname}', [
+    'uses' => 'WishlistController@remove',
+    'as' => 'wishlist.remove',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/wishlist/view', [
+    'uses' => 'WishlistController@showProduct',
+    'as' => 'wishlist.view',
+    'middleware' => ['auth'],
+]);
+
+/*...
+Interest Routes
+
+*/
+
+Route::get('/interest/add/{prodname}', [
+    'uses' => 'InterestController@addInterest',
+    'as' => 'interest.add',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/interest/remove/{prodname}', [
+    'uses' => 'InterestController@remove',
+    'as' => 'interest.remove',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/interest/view/{prodname}', [
+    'uses' => 'InterestController@showInterest',
+    'as' => 'interest.view',
+    'middleware' => ['auth'],
+]);
+
+
+Route::get('/count/{prodname}', [
+    'uses' => 'AccountController@productCount',
+    'as' => 'interest.count',
+    'middleware' => ['auth'],
+]);
+
+Route::get('/sell/{prodname}/{buyer}', [
+    'uses' => 'ProductController@sellProduct',
+    'as' => 'product.sell',
+    'middleware' => ['auth'],
+]);

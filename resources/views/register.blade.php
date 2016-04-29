@@ -34,7 +34,7 @@
             </div>
             <div class='field'>
                 <input class='placeholder-input {{ $errors->has('password') ? 'has-error' :'' }}' name="password"
-                       id='password' type='password'>
+                       id='password-reg' type='password'>
                 @if($errors->has('password'))
                     <div class="error">{{$errors->first('password')}}</div>
                 @endif

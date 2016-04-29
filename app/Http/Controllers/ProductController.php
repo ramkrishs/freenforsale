@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Product;
+use App\Wishlist;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -68,8 +69,10 @@ class ProductController extends Controller
                     ->whereNull('buyer')
                     ->where('seller','!=',Auth::user()->username)
                     ->paginate(3);
+        $username = Auth::user()->username;
+//        $wishlist = Wishlist::whereNull('deleted_at')->where('username', '=', $username)->get();
 
-        return view('products.buy')->with('products',$products);
+        return view('products.buy')->with('products',$products)->with('wishlist');
     }
 
     public function getProductsByName()
@@ -95,7 +98,7 @@ class ProductController extends Controller
             ->whereNull('deleted_at')
             ->where('seller','!=',Auth::user()->username)
             ->paginate(3);
-//        dd($products->price);
+
         return view('products.buy')->with('products',$products);
     }
     public function getProductsByPrice()
@@ -115,14 +118,13 @@ class ProductController extends Controller
         if(!$product){
             abort(404);
         }
-        dd($product);
-//        return view('users.viewProfile')->with('user',$user);
+
+        $user = User::where('username',$product->seller)->first();
+
+        return view('products.viewProduct')
+            ->with('product',$product)
+            ->with('user', $user);
     }
-
-    
-
-
-    
 
 
     public function listSoldProduct()
@@ -131,6 +133,15 @@ class ProductController extends Controller
                             ->whereNotNull('buyer')->get();
         dd($products);
 
+    }
+
+    public function sellProduct($productname,$buyer)
+    {
+        $product = Product::where('name',$productname)->first();
+        $product->buyer = $buyer;
+        $product->save();
+
+        return redirect()->back();
     }
     
 }

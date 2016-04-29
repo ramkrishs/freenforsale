@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Auth;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
@@ -18,7 +18,7 @@ class Interest extends Eloquent
      * @var array
      */
     protected $fillable = [
-        'userName', 'product',
+        'username', 'product',
     ];
 
     /**
@@ -30,5 +30,29 @@ class Interest extends Eloquent
 
 
     protected $dates = ['deleted_at'];
-    
+
+
+    public static function isInterest($prodname)
+    {
+
+        $status = false;
+        $user = new User();
+        $username = Auth::user()->username;
+        $isWish = Interest::where(['userName'=>$username,'products'=>$prodname])
+            ->whereNull('deleted_at')
+            ->first();
+
+        if ($isWish) {
+
+            $status = true;
+        }
+
+        return $status;
+    }
+    public static function productCount($prodname)
+    {
+        $count = Interest::where(['products'=>$prodname])->count();
+
+        return $count;
+    }
 }

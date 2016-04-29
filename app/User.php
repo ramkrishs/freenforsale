@@ -44,6 +44,10 @@ class User extends Eloquent implements Authenticatable
     {
         return $this->getName() ?: $this->username;
     }
+    public function getUserName()
+    {
+        return $this->username;
+    }
 
 
 }

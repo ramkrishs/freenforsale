@@ -9,12 +9,14 @@
             <div class="col-md-10">
                 <h5>Description</h5>
                 <p class="list-group-item-text">{{$product['description']}}</p>
+
+                <hr>
+
+                <span class="label label-primary">{{$product['category']}} <i class="fa fa-times" aria-hidden="true"></i></span>
             </div>
             <div class="col-md-2">
                 @include('products.partials.viewProductBtn')
             </div>
-
         </div>
     </a>
-
 </div>

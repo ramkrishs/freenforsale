@@ -6,15 +6,13 @@
         <!-- left column -->
         <div class="row profiles">
             <div class="col-xs-12 col-xs-offset-5">
-                @if(Auth::user()->profilepic)
-                    <img src="{{URL::asset('images/'.Auth::user()->profilepic)}}"
+                @if($user['profilepic'])
+                    <img src="{{URL::asset('images/'.$user['profilepic'])}}"
                          class="img-circle img-thumbnail pro-pic" alt="avatar">
                 @else
                     <img src="{{URL::asset('images/profilepic.jpg')}}"
                          class="pro-pic img-circle img-thumbnail" alt="avatar">
                 @endif
-
-
             </div>
         </div>
         <div class="row">
@@ -41,12 +39,7 @@
                         <i class="fa fa-phone" aria-hidden="true"> </i> {{!empty($user["phone"])? $user["phone"]:''}}
                     </h4>
                 </div>
-
-
+            </div>
         </div>
-
-
-
-    </div>
 </div>
 @endsection

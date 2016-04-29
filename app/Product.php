@@ -30,5 +30,17 @@ class Product extends Eloquent
 
 
     protected $dates = ['deleted_at'];
+
+    public static function isSold($productName)
+    {
+        $status = false;
+        $product = Product::where('name',$productName)->first();
+        if ($product->buyer)
+        {
+            $status = true;
+        }
+
+        return $status;
+    }
     
 }

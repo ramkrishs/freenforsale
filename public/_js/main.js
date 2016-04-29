@@ -53,14 +53,17 @@ $(".placeholder-input").on("blur", function() {
 
 })(jQuery);
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 
 $(document).ready(function($) {
 
-    $('#password').strength({
+    $('#password-reg').strength({
         strengthClass: 'strength',
         strengthMeterClass: 'strength_meter',
-        strengthButtonClass: 'button_strength',
-        strengthButtonText: 'Show Password',
+        strengthButtonClass: '',
+        strengthButtonText: '',
         strengthButtonTextToggle: 'Hide Password'
     });
 

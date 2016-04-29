@@ -1,19 +1,14 @@
 <div class="container search-nav ">
     <div class="row">
         <div class="col-xs-2">
-
+            <img class="home-logo" src="{{ URL::asset('_img/utd-logo.png') }}">
         </div>
         <div class="col-xs-7">
-            <!-- /input-group -->
-            <div class="input-group search-group">
-                <input type="text" class="form-control search-input-box " placeholder="Search for...">
-            <span class="input-group-btn">
-            <button class="btn btn-default search-btn" type="button"><i class="fa fa-search"></i></button>
-            </span>
-            </div>
+            <div class="title text-center">Free and For Sale </div>
+
         </div>
         <div class="col-xs-3">
-            <div class="form-group form-inline pull-right">
+            <div class="form-group sort-bar form-inline pull-right">
                 <label for="sortby" class="">Sort by:</label>
                 <select id="sortby" name="sortby" class="form-control">
                     <option value="0">Select Option</option>

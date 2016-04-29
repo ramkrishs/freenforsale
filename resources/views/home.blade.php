@@ -15,5 +15,10 @@
                 </div>
             </div>
         </div>
+        <div class="jumbotron" >
+
+                <img width="300" src="{{URL::asset('_img/logo.png')}}" class="pull-left">
+                <h1 class="text-center"><b>Buy or sell your items among your college mates. <b><h1></h1><h3>Help others and get help!</h3></b></b></h1>
+        </div>
     </div>
 @endsection
